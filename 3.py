@@ -2,7 +2,7 @@ import numpy as np
 from sklearn.linear_model import LogisticRegression
 from sklearn.multiclass import OneVsRestClassifier
 import matplotlib.pyplot as plt
-from utilities import visualize_classifier
+from Lab01_data.utilities import visualize_classifier
 
 # Данные
 X = np.array([
@@ -15,12 +15,9 @@ X = np.array([
 y = np.array([0, 0, 0, 1, 1, 1, 2, 2, 2, 3, 3, 3])
 
 classifier = OneVsRestClassifier(
-    LogisticRegression(solver='liblinear', C=1)
+    LogisticRegression(solver='liblinear', C=100)
 )
 
 classifier.fit(X, y)
 
-plt.figure()
 visualize_classifier(classifier, X, y)
-plt.title('Logistic Regression (C=1)')
-plt.show()
